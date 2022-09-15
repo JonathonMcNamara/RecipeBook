@@ -26,3 +26,6 @@ INSERT INTO recipes
 VALUES
 ("Pumpkin Pie", "https://images.unsplash.com/photo-1570299882315-c4c41c78292c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
 "Jons Famous Pumpkin Pie", "Fresh Pumpkin Pie", "Desert", "62f692c85d4c5d880f69ac3a");
+
+
+SELECT * from recipes;
