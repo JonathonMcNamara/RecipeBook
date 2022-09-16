@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS accounts(
   picture varchar(255) COMMENT 'User Picture'
 ) default charset utf8 COMMENT '';
 
-
+-- NOTE TABLE FOR RECIPES
 CREATE TABLE IF NOT EXISTS recipes(
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
@@ -19,13 +19,50 @@ CREATE TABLE IF NOT EXISTS recipes(
 
   FOREIGN KEY (creatorId) REFERENCES accounts(id)
 ) default charset utf8;
+-- 
 
-
+-- NOTE CREATE RECIPES
 INSERT INTO recipes
 (name,picture,title,subtitle,category,creatorId)
 VALUES
 ("Pumpkin Pie", "https://images.unsplash.com/photo-1570299882315-c4c41c78292c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
 "Jons Famous Pumpkin Pie", "Fresh Pumpkin Pie", "Desert", "62f692c85d4c5d880f69ac3a");
+-- 
 
 
 SELECT * from recipes;
+-- NOTE TABLE FOR STEPS
+CREATE TABLE IF NOT EXISTS steps(
+  position INT NOT NULL,
+  body VARCHAR(255) NOT NULL,
+  recipeId INT NOT NULL
+) default charset utf8;
+-- 
+
+-- NOTE USE THIS TO CREATE STEPS
+INSERT INTO steps
+(position,body,recipeId)
+VALUES
+(6, "Eat", 1 );
+-- 
+
+SELECT * from steps;
+
+-- NOTE TABLE FOR INGREDIENTS
+CREATE TABLE IF NOT EXISTS ingredients(
+  name VARCHAR(255) NOT NULL,
+  quantity VARCHAR(255) NOT NULL DEFAULT 0,
+  recipeId INT NOT NULL
+) default charset utf8;
+-- 
+
+-- NOTE USE THIS FOR INSERT INTO INGREDIENTS
+INSERT INTO ingredients
+(name,quantity,recipeId)
+VALUES
+("Crust", 1, 1);
+-- 
+
+-- NOTE SELECT ALL INGREDIENTS
+SELECT * from ingredients;
+-- 
