@@ -18,10 +18,10 @@ namespace RecipeBook.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Ingredient>> GetIngredientsByRecipeId(){
+        public ActionResult<List<Ingredient>> GetIngredientsByRecipeId(int id){
             try
         {
-            List<Ingredient> ingredients = _ingredientsService.GetIngredientsByRecipeId();
+            List<Ingredient> ingredients = _ingredientsService.GetIngredientsByRecipeId(id);
             return Ok(ingredients);
         }
             catch (Exception e)

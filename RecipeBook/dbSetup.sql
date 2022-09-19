@@ -64,7 +64,8 @@ VALUES
 -- 
 
 -- NOTE SELECT ALL INGREDIENTS
-SELECT * from ingredients;
+SELECT * from ingredients
+WHERE recipeId = 1;
 -- 
 
 -- GETTING STEPS IN ORDER BY RECIPE ID
