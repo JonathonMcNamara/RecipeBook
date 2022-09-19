@@ -75,12 +75,12 @@ CREATE TABLE IF NOT EXISTS steps(
 INSERT INTO ingredients
 (name,quantity,recipeId)
 VALUES
-("Crust", 1, 1);
+("IDK", 1, 2);
 -- 
 
 -- NOTE SELECT ALL INGREDIENTS
-SELECT * from ingredients
-WHERE recipeId = 1;
+SELECT * from ingredients i
+JOIN recipes r ON r.id = i.recipeId ;
 -- 
 
 -- GETTING STEPS IN ORDER BY RECIPE ID
