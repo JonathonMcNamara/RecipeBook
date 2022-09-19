@@ -39,6 +39,8 @@ CREATE TABLE IF NOT EXISTS steps(
 ) default charset utf8;
 -- 
 
+
+
 -- NOTE USE THIS TO CREATE STEPS
 INSERT INTO steps
 (position,body,recipeId)
@@ -50,9 +52,22 @@ SELECT * from steps;
 
 -- NOTE TABLE FOR INGREDIENTS
 CREATE TABLE IF NOT EXISTS ingredients(
+  id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   quantity VARCHAR(255) NOT NULL DEFAULT 0,
-  recipeId INT NOT NULL
+  recipeId INT NOT NULL,
+
+  FOREIGN KEY (recipeId) REFERENCES recipes(id)
+) default charset utf8;
+-- 
+-- NOTE TABLE FOR STEPS
+CREATE TABLE IF NOT EXISTS steps(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  position VARCHAR(255) NOT NULL,
+  body VARCHAR(255) NOT NULL DEFAULT 0,
+  recipeId INT NOT NULL,
+
+  FOREIGN KEY (recipeId) REFERENCES recipes(id)
 ) default charset utf8;
 -- 
 
