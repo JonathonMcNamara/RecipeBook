@@ -79,7 +79,8 @@ VALUES
 -- 
 
 -- NOTE SELECT ALL INGREDIENTS
-SELECT * from ingredients i
+SELECT *
+from ingredients i
 JOIN recipes r ON r.id = i.recipeId ;
 -- 
 
@@ -89,3 +90,4 @@ WHERE recipeId = 1
 ORDER BY position
 ;
 -- 
+
