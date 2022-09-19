@@ -31,7 +31,7 @@ namespace RecipeBook.Repositories
             return recipes;
         }
 
-        internal Recipe Create(Recipe newRecipe)
+        public Recipe Create(Recipe newRecipe)
         {
             string sql = @"
             INSERT INTO recipes
