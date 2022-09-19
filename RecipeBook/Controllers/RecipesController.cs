@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using CodeWorks.Auth0Provider;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RecipeBook.Models;
 using RecipeBook.Services;
@@ -26,9 +29,28 @@ namespace RecipeBook.Controllers
         }
             catch (Exception e)
         {
-            return BadRequest(e);
+
+            return BadRequest(e.Message);
         }
         }
 
+        [HttpGet]
+        [Authorize]
+        public async Task<ActionResult<Recipe>> Create([FromBody] Recipe newRecipe){
+        try
+        {
+                Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+                newRecipe.creatorId = userInfo.Id;
+                Recipe recipe = _recipesService.Create(newRecipe);
+                recipe.Creator = userInfo;
+                return Ok(recipe);
+
+        }
+            catch (Exception e)
+        {
+
+            return BadRequest(e.Message);
+        }
+        }
     }
 }

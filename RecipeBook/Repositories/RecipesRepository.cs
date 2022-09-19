@@ -30,5 +30,19 @@ namespace RecipeBook.Repositories
             }).ToList();
             return recipes;
         }
+
+        internal Recipe Create(Recipe newRecipe)
+        {
+            string sql = @"
+            INSERT INTO recipes
+            (name,picture,title,subtitle,category,creatorId)
+            VALUES
+            (@name, @picture, @title, @subtitle, @category, @creatorId);
+            SELECT LAST_INSERT_ID();
+            ";
+            int id = _db.ExecuteScalar<int>(sql, newRecipe);
+            newRecipe.Id = id;
+            return newRecipe;
+        }
     }
 }
