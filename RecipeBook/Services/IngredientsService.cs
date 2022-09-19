@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using RecipeBook.Models;
 
 namespace RecipeBook.Services
 {
     public class IngredientsService
     {
-        
+        internal List<Ingredient> GetIngredientsByRecipeId()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
