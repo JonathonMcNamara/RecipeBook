@@ -34,7 +34,7 @@ namespace RecipeBook.Controllers
         }
         }
 
-        [HttpGet]
+        [HttpPost]
         [Authorize]
         public async Task<ActionResult<Recipe>> Create([FromBody] Recipe newRecipe){
         try
