@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using RecipeBook.Models;
 using RecipeBook.Repositories;
@@ -25,7 +24,7 @@ namespace RecipeBook.Services
 
         internal List<Ingredient> GetIngredientsByRecipeId(int id)
         {
-            throw new NotImplementedException();
+            return _recipesRepo.GetRecipeIngredients(id);
         }
     }
 }

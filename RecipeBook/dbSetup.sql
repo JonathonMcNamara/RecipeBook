@@ -78,10 +78,11 @@ VALUES
 ("IDK", 1, 2);
 -- 
 
--- NOTE SELECT ALL INGREDIENTS
-SELECT *
+-- NOTE SELECT ALL INGREDIENTS FROM A SPECIFIC RECIPE
+SELECT i.name, i.quantity, r.name
 from ingredients i
-JOIN recipes r ON r.id = i.recipeId ;
+JOIN recipes r ON r.id = i.recipeId
+WHERE r.id = 1;
 -- 
 
 -- GETTING STEPS IN ORDER BY RECIPE ID

@@ -31,6 +31,7 @@ namespace RecipeBook.Repositories
             return recipes;
         }
 
+
         public Recipe Create(Recipe newRecipe)
         {
             string sql = @"
@@ -43,6 +44,17 @@ namespace RecipeBook.Repositories
             int id = _db.ExecuteScalar<int>(sql, newRecipe);
             newRecipe.Id = id;
             return newRecipe;
+        }
+        internal List<Ingredient> GetRecipeIngredients(int id)
+        {
+        string sql = @"
+        SELECT i.name, i.quantity, r.name
+        from ingredients i
+        JOIN recipes r ON r.id = i.recipeId
+        WHERE r.id = @id;
+        ";
+        List<Ingredient> ingredients = _db.Query<Ingredient>(sql, new {id}).ToList();
+        return ingredients;
         }
     }
 }

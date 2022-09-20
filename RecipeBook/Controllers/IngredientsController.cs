@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using RecipeBook.Models;
 using RecipeBook.Services;
 
 namespace RecipeBook.Controllers
@@ -16,21 +13,6 @@ namespace RecipeBook.Controllers
         {
             _ingredientsService = ingredientsService;
         }
-
-        [HttpGet]
-        public ActionResult<List<Ingredient>> GetIngredientsByRecipeId(int id){
-            try
-        {
-            List<Ingredient> ingredients = _ingredientsService.GetIngredientsByRecipeId(id);
-            return Ok(ingredients);
-        }
-            catch (Exception e)
-        {
-
-            return BadRequest(e.Message);
-        }
-        }
-
 
 
     }
