@@ -35,5 +35,10 @@ namespace RecipeBook.Services
         {
             return _recipesRepo.GetRecipeIngredients(id);
         }
+
+        internal List<Step> GetRecipeSteps(int id)
+        {
+            return _recipesRepo.GetRecipeSteps(id);
+        }
     }
 }

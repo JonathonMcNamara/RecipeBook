@@ -64,6 +64,21 @@ namespace RecipeBook.Controllers
         }
 
 
+        [HttpGet("{id}/steps")]
+        public ActionResult<List<Step>> GetRecipeSteps(int id){
+            try
+        {
+            List<Step> steps = _recipesService.GetRecipeSteps(id);
+            return Ok(steps);
+        }
+            catch (Exception e)
+        {
+
+            return BadRequest(e.Message);
+        }
+        }
+
+
         [HttpPost]
         [Authorize]
         public async Task<ActionResult<Recipe>> Create([FromBody] Recipe newRecipe){

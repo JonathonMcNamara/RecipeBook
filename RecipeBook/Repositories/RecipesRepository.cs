@@ -41,6 +41,18 @@ namespace RecipeBook.Repositories
             return recipe;
         }
 
+        internal List<Step> GetRecipeSteps(int id)
+        {
+            string sql = @"
+            SELECT *
+            from steps s
+            JOIN recipes r ON r.id = s.recipeId
+            WHERE r.id = @id;
+            ";
+            List<Step> steps = _db.Query<Step>(sql, new{id}).ToList();
+            return steps;
+        }
+
         public Recipe Create(Recipe newRecipe)
         {
             string sql = @"
