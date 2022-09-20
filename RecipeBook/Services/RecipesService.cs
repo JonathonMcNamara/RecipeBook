@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using RecipeBook.Models;
 using RecipeBook.Repositories;
@@ -20,6 +21,11 @@ namespace RecipeBook.Services
 
         internal Recipe Create(Recipe newRecipe){
             return _recipesRepo.Create(newRecipe);
+        }
+
+        internal List<Ingredient> GetIngredientsByRecipeId(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

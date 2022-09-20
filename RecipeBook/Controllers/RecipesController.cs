@@ -34,6 +34,21 @@ namespace RecipeBook.Controllers
         }
         }
 
+        [HttpGet("{id}/ingredients")]
+        public ActionResult<List<Ingredient>> GetRecipeIngredients(int id){
+            try
+        {
+            List<Ingredient> ingredients = _recipesService.GetIngredientsByRecipeId(id);
+            return Ok(ingredients);
+        }
+            catch (Exception e)
+        {
+
+            return BadRequest(e.Message);
+        }
+        }
+
+
         [HttpPost]
         [Authorize]
         public async Task<ActionResult<Recipe>> Create([FromBody] Recipe newRecipe){
