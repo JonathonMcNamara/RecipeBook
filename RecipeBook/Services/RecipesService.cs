@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using RecipeBook.Models;
 using RecipeBook.Repositories;
@@ -16,6 +17,14 @@ namespace RecipeBook.Services
         internal List<Recipe> GetAll()
         {
             return _recipesRepo.GetAll();
+        }
+
+        internal Recipe GetById(int id){
+            Recipe recipe = _recipesRepo.GetById(id);
+            if(recipe == null){
+                throw new Exception("No recipe by that id");
+            }
+            return recipe;
         }
 
         internal Recipe Create(Recipe newRecipe){

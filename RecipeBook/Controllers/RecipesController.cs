@@ -34,6 +34,21 @@ namespace RecipeBook.Controllers
         }
         }
 
+
+        [HttpGet("{id}")]
+        public ActionResult<Recipe> GetRecipeById(int id){
+            try
+        {
+            Recipe recipe = _recipesService.GetById(id);
+            return recipe;
+        }
+            catch (Exception e)
+        {
+
+            return BadRequest(e.Message);
+        }
+        }
+
         [HttpGet("{id}/ingredients")]
         public ActionResult<List<Ingredient>> GetRecipeIngredients(int id){
             try

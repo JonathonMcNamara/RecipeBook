@@ -31,6 +31,15 @@ namespace RecipeBook.Repositories
             return recipes;
         }
 
+        internal Recipe GetById(int id)
+        {
+            string sql = @"
+            SELECT * FROM recipes
+            WHERE id = @id;
+            ";
+            Recipe recipe = _db.Query<Recipe>(sql, new {id}).FirstOrDefault();
+            return recipe;
+        }
 
         public Recipe Create(Recipe newRecipe)
         {
@@ -48,7 +57,7 @@ namespace RecipeBook.Repositories
         internal List<Ingredient> GetRecipeIngredients(int id)
         {
         string sql = @"
-        SELECT i.name, i.quantity, r.name
+        SELECT i.name, i.quantity, i.id, i.recipeId
         from ingredients i
         JOIN recipes r ON r.id = i.recipeId
         WHERE r.id = @id;
